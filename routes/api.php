@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\CoursController;
+use App\Http\Controllers\EtudiantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('teachers', TeacherController::class);
+Route::resource('etudiants', EtudiantController::class);
+Route::resource('cours', CoursController::class);
