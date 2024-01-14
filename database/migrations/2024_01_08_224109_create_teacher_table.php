@@ -23,15 +23,7 @@ return new class extends Migration
             $table->integer('salaire');
             $table->string('email');
             $table->string('mot_de_passe');
-            // $table->binary('diplome1');
-            // $table->binary('diplome2');
-            // $table->binary('diplome3')->nullable();
-            // $table->double('moyenne_dip1');
-            // $table->double('moyenne_dip2');
-            // $table->double('moyenne_dip3')->nullable();
-            // $table->string('choix_1');
-            // $table->string('choix_2');
-            // $table->string('choix_3');
+            $table->foreignId('role_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

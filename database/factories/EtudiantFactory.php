@@ -50,6 +50,7 @@ class EtudiantFactory extends Factory
             'choix_1' => Str::random(3),
             'choix_2' => Str::random(3),
             'choix_3' => Str::random(3),
+            'role_id' => 2,
         ];
     }
 }
