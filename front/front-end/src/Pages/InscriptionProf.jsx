@@ -27,16 +27,16 @@ export default function InscriptionProf() {
     setLoading(true);
     const data = {
       cin: prof.cin,
-      nom: prof.nom,
-      prenom: prof.prenom,
-      tel: prof.tel,
-      email: prof.email,
-      mdp: prof.mdp,
-      dins: prof.dins,
+      last_name: prof.nom,
+      first_name: prof.prenom,
+      phone_number: prof.tel,
+      date_inscription: prof.dins,
       salaire: prof.salaire,
+      email: prof.email,
+      mot_de_passe: prof.mdp,
     };
     http
-      .post("/inscription-prof", data)
+      .post("/teachers", data)
       .then((res) => {
         alert("Dik sa3a chof wach mchat wla la");
         navigate("/");
@@ -59,7 +59,7 @@ export default function InscriptionProf() {
         <div className="col-md-12">
           <div className="card">
             <div className="card-header ">
-              <h4 className="text-center">Inscription Prof</h4>
+              <h4 className="text-center">Inscription Enseignant</h4>
             </div>
             <div className="card-body">
               <form onSubmit={inscrire}>

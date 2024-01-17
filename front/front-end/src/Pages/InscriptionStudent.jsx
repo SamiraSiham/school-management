@@ -45,36 +45,36 @@ export default function InscriptionStudent() {
     setLoading(true);
     const data = {
       cin: student.cin,
-      massar: student.massar,
+      // massar: student.massar,
       nom: student.nom,
       prenom: student.prenom,
-      dns: student.dns,
-      tel: student.tel,
+      date_naiss: student.dns,
+      phone_number: student.tel,
       email: student.tel,
-      mdp: student.mdp,
-      dip1: student.dip1,
-      dip2: student.dip2,
-      dip3: student.dip3,
+      password: student.mdp,
+      diplome_1: student.dip1,
+      diplome_2: student.dip2,
+      diplome_3: student.dip3,
       moy_gen_dip1: student.moy_gen_dip1,
       moy_gen_dip2: student.moy_gen_dip2,
       moy_gen_dip3: student.moy_gen_dip3,
-      choix1: student.choix1,
-      choix2: student.choix2,
-      choix3: student.choix3,
+      choix_1: student.choix1,
+      choix_2: student.choix2,
+      choix_3: student.choix3,
     };
     http
-      .post("/inscription-student", data)
+      .post("/etudiants", data)
       .then((res) => {
         alert("Dik sa3a chof wach mchat wla la");
         navigate("/");
         setLoading(false);
       })
-      .catch((err) => {
-        if (err.resppnse.status === 422 && err.resppnse.status === 500) {
-          setInputErrorList(err.response.data.errors); // errors are the ones in the validator
-          setLoading(false);
-        }
-      });
+        // .catch((err) => {
+        //   if (err.resppnse.status === 422 && err.resppnse.status === 500) {
+        //     setInputErrorList(err.response.data.errors); // errors are the ones in the validator
+        //     setLoading(false);
+        //   }
+        // });
   };
   if (loading) {
     return <Loading />;

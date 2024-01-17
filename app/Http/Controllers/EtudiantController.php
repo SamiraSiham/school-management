@@ -98,7 +98,7 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Etudiant $student)
     {
         // return view('etudiants.edit', compact('student'));
         return response()->json($student);
@@ -170,7 +170,7 @@ class EtudiantController extends Controller
      */
     public function destroy($id)
     {
-        Student::where('id', $id)->delete();
+        Etudiant::where('id', $id)->delete();
         return redirect()->route('etudiants.index');
     }
 }
