@@ -6,29 +6,12 @@ import interactionPlugin from "@fullcalendar/interaction";
 import * as bootstrap from "bootstrap";
 import Api from "../Components.jsx/Api";
 export default function Calendar() {
-    const [events, setEv] = useState([
-        {
-            title: "hamid",
-            start: "2024-01-18T09:00:00",
-            end: "2024-01-18T14:00:00",
-            text: "text 1",
-            filiere: "filiere 1",
-        },
-        {
-            title: "hamid",
-            start: "2024-01-19T14:00:00",
-            end: "2024-01-19T18:00:00",
-            text: "text 1",
-            filiere: "filiere 1",
-        },
-    ]);
+    const [events, setEv] = useState([]);
     var event = [];
     // console.log(events);
     const { http } = Api();
     useEffect(() => {
         http.get("/seance").then((res) => {
-            // events.push(res.data.Sceances);
-            // console.log(res.data.Sceances.length);
 
             for (var i = 0; i < res.data.Sceances.length; i++) {
                 console.log(res.data.Sceances[i]);

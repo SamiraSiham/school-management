@@ -34,8 +34,6 @@ Route::resource('cours', CoursController::class);
 Route::get('/seance',[Sceance::class,'index']);
 Route::post('/seance/create',[Sceance::class,'store']);
 
-Route::get('/seance',[Sceance::class,'index']);
-Route::post('/seance/create',[Sceance::class,'store']);
 
 Route::post('login-prof', [LoginRegisterController::class, 'loginProf']);
 Route::post('login-etudiant', [LoginRegisterController::class, 'loginEtudiant']);
