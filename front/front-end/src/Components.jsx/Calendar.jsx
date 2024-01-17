@@ -5,31 +5,31 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import * as bootstrap from "bootstrap";
 export default function Calendar(props) {
-    const events = [
-        {
-            title: "PROF.MOUNADI",
-            start: "2024-01-17T14:00:00",
-            end: "2024-01-17T17:00:00",
-            text: "Une seance de struct",
-            filiere: "TMW",
-        },
-        {
-            title: "PROF.MOUNADI",
-            start: "2024-01-17T14:00:00",
-            end: "2024-01-17T17:00:00",
-            text: "Une seance de struct",
-            filiere: "CLE",
-        },
-    ];
+    // const events = [
+    //     {
+    //         title: "PROF.MOUNADI",
+    //         start: "2024-01-17T14:00:00",
+    //         end: "2024-01-17T17:00:00",
+    //         text: "Une seance de struct",
+    //         filiere: "TMW",
+    //     },
+    //     {
+    //         title: "PROF.MOUNADI",
+    //         start: "2024-01-17T14:00:00",
+    //         end: "2024-01-17T17:00:00",
+    //         text: "Une seance de struct",
+    //         filiere: "CLE",
+    //     },
+    // ];
     // console.log(props.data);
-    // var events = [];
-    // if (!props.data) {
-    //     console.log("oho");
-    // } else {
-    //     console.log("Ouii");
-    //     events = [...events,props.data.data];
-    //     console.log(events);
-    // }
+    var events = [];
+    if (!props.data) {
+        console.log("oho");
+    } else {
+        console.log("Ouii");
+        events = [props.data.data];
+        console.log(events);
+    }
 
     return (
         <div className="container">
