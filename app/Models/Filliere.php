@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Etudiant;
+use App\Models\Cours;
+use App\Models\Teacher;
 
 class Filliere extends Model
 {
@@ -22,5 +24,15 @@ class Filliere extends Model
     public function etudiants(): HasMany
     {
         return $this->hasMany(Etudiant::class,'cin','id');
+    }
+    public function cours(){
+        return $this->belongsToMany(
+            Cours::class, 'cours_teacher_filliere'
+        );
+    }
+    public function teachers(){
+        return $this->belongsToMany(
+            Teacher::class, 'cours_teacher_filliere'
+        );
     }
 }
