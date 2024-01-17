@@ -47,7 +47,7 @@ export default function SetCalendar() {
                     <label htmlFor="">Filiere cible</label>
                     <input
                         type="text"
-                        name="nom"
+                        name="filiere"
                         value={filiere}
                         onChange={(e) => setFiliere(e.target.value)}
                         className="form-control"
@@ -77,7 +77,7 @@ export default function SetCalendar() {
                     <label htmlFor="">Heure de debut</label>
                     <input
                         type="time"
-                        name="time"
+                        name="heuredeb"
                         value={startTime}
                         onChange={(e) => setStartTime(e.target.value)}
                         className="form-control"
@@ -87,7 +87,7 @@ export default function SetCalendar() {
                     <label htmlFor="">Heure de fin</label>
                     <input
                         type="time"
-                        name="time"
+                        name="heurefin"
                         value={endTime}
                         onChange={(e) => setEndTime(e.target.value)}
                         className="form-control"

@@ -1,35 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import * as bootstrap from "bootstrap";
-export default function Calendar(props) {
-    // const events = [
-    //     {
-    //         title: "PROF.MOUNADI",
-    //         start: "2024-01-17T14:00:00",
-    //         end: "2024-01-17T17:00:00",
-    //         text: "Une seance de struct",
-    //         filiere: "TMW",
-    //     },
-    //     {
-    //         title: "PROF.MOUNADI",
-    //         start: "2024-01-17T14:00:00",
-    //         end: "2024-01-17T17:00:00",
-    //         text: "Une seance de struct",
-    //         filiere: "CLE",
-    //     },
-    // ];
-    // console.log(props.data);
-    var events = [];
-    if (!props.data) {
-        console.log("oho");
-    } else {
-        console.log("Ouii");
-        events = [props.data.data];
-        console.log(events);
-    }
+import Api from "../Components.jsx/Api";
+export default function Calendar() {
+    const [events, setEv] = useState([
+        {
+            title: "hamid",
+            start: "2024-01-18T09:00:00",
+            end: "2024-01-18T14:00:00",
+            text: "text 1",
+            filiere: "filiere 1",
+        },
+        {
+            title: "hamid",
+            start: "2024-01-19T14:00:00",
+            end: "2024-01-19T18:00:00",
+            text: "text 1",
+            filiere: "filiere 1",
+        },
+    ]);
+    var event = [];
+    // console.log(events);
+    const { http } = Api();
+    useEffect(() => {
+        http.get("/seance").then((res) => {
+            // events.push(res.data.Sceances);
+            // console.log(res.data.Sceances.length);
+
+            for (var i = 0; i < res.data.Sceances.length; i++) {
+                console.log(res.data.Sceances[i]);
+                event.push({
+                    title: res.data.Sceances[i].name,
+                    start: `${res.data.Sceances[i].dateSceance}T${res.data.Sceances[i].heureDebut}`,
+                    end: `${res.data.Sceances[i].dateSceance}T${res.data.Sceances[i].heureFin}`,
+                    text: res.data.Sceances[i].intitule,
+                    filiere: res.data.Sceances[i].filiere,
+                });
+                setEv(event);
+            }
+            // console.log(event);
+        });
+    }, []);
 
     return (
         <div className="container">

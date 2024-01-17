@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\Sceance;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('teachers', TeacherController::class);
 Route::resource('etudiants', EtudiantController::class);
 Route::resource('cours', CoursController::class);
+
+Route::get('/seance',[Sceance::class,'index']);
+Route::post('/seance/create',[Sceance::class,'store']);
