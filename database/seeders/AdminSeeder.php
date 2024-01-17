@@ -21,14 +21,16 @@ class AdminSeeder extends Seeder
                 'first_name' => 'Samira',
                 'last_name' => 'Siham',
                 'email' => 'SihamSamira@um5.ac.ma',
-                'password' => 'SihamSamira.um5'
+                'password' => 'SihamSamira.um5',
+                'role_id' => 1,
             ],
             [
                 'id' => 2,
                 'first_name' => 'Haytam',
                 'last_name' => 'Rais',
                 'email' => 'RaisHaytam@um5.ac.ma',
-                'password' => 'RaisHaytam.um5'
+                'password' => 'RaisHaytam.um5',
+                'role_id' => 1,
             ],
         ],
         );

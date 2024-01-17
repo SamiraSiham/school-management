@@ -41,8 +41,8 @@ class FilliereController extends Controller
             'id' => 'required',
             'intitule' => 'required'
         ],[
-            'id.required' => 'required field';
-            'intitule.required' => 'required field';
+            'id.required' => 'required field',
+            'intitule.required' => 'required field'
         ]);
         $filliere = new Filliere;
         $filliere->id = $req->id;
@@ -91,7 +91,7 @@ class FilliereController extends Controller
             'intitule.required' => 'required field'
         ]);
         $filliere->update([
-            'intitule' => $req->initutle;
+            'intitule' => $req->initutle
         ]);
         return response()->json(['message'=>'update success']);
 

@@ -4,73 +4,87 @@ import Loading from "../Components.jsx/Loading";
 import { useNavigate } from "react-router-dom";
 
 export default function InscriptionStudent() {
-  //   const [cin, setCin] = useState("");
-  //   const [massar, setMassar] = useState("");
-  //   const [nom, setNom] = useState("");
-  //   const [prenom, setPrenom] = useState("");
-  //   const [dns, setDns] = useState("");
-  //   const [anbac, setAnbac] = useState("");
-  //   const [flbac, setFlbac] = useState("");
-  //   const [ddip, setDdip] = useState("");
-  //   const [andip, setAndip] = useState("");
   const navigate = useNavigate();
   const { http } = Api();
   const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState([]);
+
   const [inputErrorList, setInputErrorList] = useState({});
   const [student, setStudent] = useState({
     cin: "",
-    massar: "",
+    cne: "",
     nom: "",
     prenom: "",
-    dns: "",
-    tel: "",
+    date_naiss: "",
+    phone_number: "",
     email: "",
     mdp: "",
-    dip1: "",
-    dip2: "",
-    dip3: "",
+    diplome_1: "",
+    diplome_2: "",
+    diplome_3: "",
     moy_gen_dip1: "",
     moy_gen_dip2: "",
     moy_gen_dip3: "",
-    choix1: "",
-    choix2: "",
-    choix3: "",
+    choix_1: "",
+    choix_2: "",
+    choix_3: "",
   });
   const handleInput = (e) => {
     e.persist();
     setStudent({ ...student, [e.target.name]: e.target.value });
   };
+  const onFileChange = (e,inputIndex) => {
+    e.persist();
+    const files = Array.from(e.target.files);
+    // setFile({...file,[e.target.name] : e.target.files});
+    setFile((prevSelectedFiles) => {
+      const updatedFiles = [...prevSelectedFiles];
+      updatedFiles[inputIndex] = files;
+      return updatedFiles;
+    });
+
+    // for (let i = 0; i < file.length; i++) {
+    //   setFile([...file,e.target.files[i]]);
+
+    // }
+
+
+  };
   const inscrire = (e) => {
     e.preventDefault();
+    console.log(file);
     setLoading(true);
     const data = {
       cin: student.cin,
-      massar: student.massar,
+      cne: student.cne,
       nom: student.nom,
       prenom: student.prenom,
-      dns: student.dns,
-      tel: student.tel,
-      email: student.tel,
-      mdp: student.mdp,
-      dip1: student.dip1,
-      dip2: student.dip2,
-      dip3: student.dip3,
+      date_naiss: student.date_naiss,
+      phone_number: student.phone_number,
+      email: student.email,
+      password: student.password,
+      // diplome_1: student.diplome_1,
+      diplome_1: file[1],
+      // diplome_2: student.diplome_2,
+      diplome_2: file[2],
+      // diplome_3: student.diplome_3,
+      diplome_3: file[3],
       moy_gen_dip1: student.moy_gen_dip1,
       moy_gen_dip2: student.moy_gen_dip2,
       moy_gen_dip3: student.moy_gen_dip3,
-      choix1: student.choix1,
-      choix2: student.choix2,
-      choix3: student.choix3,
+      choix_1: student.choix_1,
+      choix_2: student.choix_2,
+      choix_3: student.choix_3,
     };
     http
-      .post("/inscription-student", data)
+      .post("/candidat", data)
       .then((res) => {
         alert("Dik sa3a chof wach mchat wla la");
         navigate("/");
         setLoading(false);
       })
       .catch((err) => {
-        if (err.resppnse.status === 422 && err.resppnse.status === 500) {
+        if (err.response.status === 422 || err.response.status === 500) {
           setInputErrorList(err.response.data.errors); // errors are the ones in the validator
           setLoading(false);
         }
@@ -106,12 +120,12 @@ export default function InscriptionStudent() {
                     <label htmlFor="">Code Massar</label>
                     <input
                       type="text"
-                      name="massar"
-                      value={student.massar}
+                      name="cne"
+                      value={student.cne}
                       onChange={handleInput}
                       className="form-control"
                     />
-                    <span className="text-danger">{inputErrorList.massar}</span>
+                    <span className="text-danger">{inputErrorList.cne}</span>
                   </div>
                 </div>
                 <div className="mb-3">
@@ -141,17 +155,17 @@ export default function InscriptionStudent() {
                   <label htmlFor="">tel</label>
                   <input
                     type="number"
-                    name="tel"
-                    value={student.tel}
+                    name="phone_number"
+                    value={student.phone_number}
                     onChange={handleInput}
                     className="form-control"
                   />
-                  <span className="text-danger">{inputErrorList.tel}</span>
+                  <span className="text-danger">{inputErrorList.phone_number}</span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="">Email</label>
                   <input
-                    type="mail"
+                    type="email"
                     name="email"
                     value={student.email}
                     onChange={handleInput}
@@ -163,37 +177,46 @@ export default function InscriptionStudent() {
                   <label htmlFor="">Mot de passe</label>
                   <input
                     type="password"
-                    name="mdp"
-                    value={student.mdp}
+                    name="password"
+                    value={student.password}
                     onChange={handleInput}
                     className="form-control"
                   />
-                  <span className="text-danger">{inputErrorList.mdp}</span>
+                  <span className="text-danger">{inputErrorList.password}</span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="">Date de naissance</label>
                   <input
                     type="date"
-                    name="dns"
-                    value={student.dns}
+                    name="date_naiss"
+                    value={student.date_naiss}
                     onChange={handleInput}
                     className="form-control"
                   />
-                  <span className="text-danger">{inputErrorList.dns}</span>
+                  <span className="text-danger">{inputErrorList.date_naiss}</span>
                 </div>
                 <div className="container d-flex justify-content-around">
+
                   <div className="mb-3">
                     <label htmlFor="">Diplome N1</label>
                     <input
-                      type="text"
-                      name="dip1"
-                      value={student.dip1}
-                      onChange={handleInput}
+                      type="file"
+                      name="diplome_1"
+                      value={student.diplome_1.name}
+                      // onChange={onFileChange}
+                      onChange={(e)=>onFileChange(e,1)}
                       className="form-control"
                       placeholder="Bac Pc,SVT .."
                     />
-                    <span className="text-danger">{inputErrorList.dip1}</span>
+                    <span className="text-danger">{inputErrorList.diplome_1}</span>
                   </div>
+
+                  {/* {[...Array(3).keys()].map((inputIndex) => (
+                    <div key={inputIndex}>
+                      <input type="file" multiple onChange={(e) => handleFileChange(e, inputIndex)} />
+                    </div>
+                  ))} */}
+
                   <div className="mb-3">
                     <label htmlFor="">Moyenne Generale</label>
                     <input
@@ -212,14 +235,15 @@ export default function InscriptionStudent() {
                   <div className="mb-3">
                     <label htmlFor="">Diplome N2</label>
                     <input
-                      type="text"
-                      name="dip2"
-                      value={student.dip2}
-                      onChange={handleInput}
+                      type="file"
+                      name="diplome_2"
+                      value={student.diplome_2.name}
+                      // onChange={onFileChange}
+                      onChange={(e)=>onFileChange(e,2)}
                       className="form-control"
                       placeholder="Bac+2: DTS DUT DEUG"
                     />
-                    <span className="text-danger">{inputErrorList.dip2}</span>
+                    <span className="text-danger">{inputErrorList.diplome_2}</span>
                   </div>
                   <div className="mb-3">
                     <label htmlFor="">Moyenne Generale</label>
@@ -239,14 +263,15 @@ export default function InscriptionStudent() {
                   <div className="mb-3">
                     <label htmlFor="">Diplome N3</label>
                     <input
-                      type="text"
-                      name="dip3"
-                      value={student.dip3}
-                      onChange={handleInput}
+                      type="file"
+                      name="diplome_3"
+                      value={student.diplome_3.name}
+                      // onChange={onFileChange}
+                      onChange={(e)=>onFileChange(e,3)}
                       className="form-control"
                       placeholder="Bac+3"
                     />
-                    <span className="text-danger">{inputErrorList.dip3}</span>
+                    <span className="text-danger">{inputErrorList.diplome_3}</span>
                   </div>
                   <div className="mb-3">
                     <label htmlFor="">Moyenne Generale</label>
@@ -266,19 +291,19 @@ export default function InscriptionStudent() {
                 <div className="mb-3">
                   <label htmlFor="">Choix 1</label>
                   <select
-                    name="choix1"
+                    name="choix_1"
                     className="form-control"
                     id=""
                     onChange={handleInput}
                   >
-                    <option value="choix" selected disabled>
+                    <option value="" selected disabled>
                       Choix1
                     </option>
                     <option value="tmw">tmw</option>
                     <option value="cle">cle</option>
                     <option value="anglais">anglais</option>
                   </select>
-                  <span className="text-danger">{inputErrorList.choix1}</span>
+                  <span className="text-danger">{inputErrorList.choix_1}</span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="">Choix 2</label>
@@ -287,7 +312,7 @@ export default function InscriptionStudent() {
                     className="form-control"
                     onChange={handleInput}
                   >
-                    <option value="choix" selected disabled>
+                    <option value="" selected disabled>
                       Choix2
                     </option>
 
@@ -295,7 +320,7 @@ export default function InscriptionStudent() {
                     <option value="cle">cle</option>
                     <option value="anglais">anglais</option>
                   </select>
-                  <span className="text-danger">{inputErrorList.choix2}</span>
+                  <span className="text-danger">{inputErrorList.choix_2}</span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="">Choix 3</label>
@@ -304,7 +329,7 @@ export default function InscriptionStudent() {
                     className="form-control"
                     onChange={handleInput}
                   >
-                    <option value="choix" selected disabled>
+                    <option value="" selected disabled>
                       Choix3
                     </option>
 
@@ -312,7 +337,7 @@ export default function InscriptionStudent() {
                     <option value="cle">cle</option>
                     <option value="anglais">anglais</option>
                   </select>
-                  <span className="text-danger">{inputErrorList.choix3}</span>
+                  <span className="text-danger">{inputErrorList.choix_3}</span>
                 </div>
                 {/* ----------------------------------------------------------------------- */}
                 <div className="mb-3">

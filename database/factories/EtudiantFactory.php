@@ -23,6 +23,7 @@ class EtudiantFactory extends Factory
         $faker = Faker::create();
         return [
             'cin' => Str::random(6),
+            'cne' => Str::random(10),
             'nom' => Str::random(10),
             'prenom' => Str::random(10),
             'date_naiss' => $faker->date,
@@ -47,9 +48,6 @@ class EtudiantFactory extends Factory
             'moy_gen_dip1' => rand(10,20),
             'moy_gen_dip2' => rand(10,20),
             'moy_gen_dip3' => rand(10,20),
-            'choix_1' => Str::random(3),
-            'choix_2' => Str::random(3),
-            'choix_3' => Str::random(3),
             'role_id' => 2,
         ];
     }

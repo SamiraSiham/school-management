@@ -30,6 +30,11 @@ export default function Navbar() {
                 Inscription
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link active" to="/nouvelle-inscription-student">
+                Pre-Inscription
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

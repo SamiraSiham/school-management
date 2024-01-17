@@ -27,10 +27,10 @@ class EtudiantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     return view('etudiants.create');
-    // }
+    public function create()
+    {
+        return view('etudiants.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,6 +42,7 @@ class EtudiantController extends Controller
     {
         $req->validate([
             'cin' => 'required',
+            'cne' => 'required',
             'nom' => 'required',
             'prenom' => 'required',
             'date_naiss' => 'required',
@@ -59,6 +60,7 @@ class EtudiantController extends Controller
         ]);
         $etudiant = new Etudiant;
         $etudiant->cin = $req->cin;
+        $etudiant->cne = $req->cne;
         $etudiant->nom = $req->nom;
         $etudiant->prenom = $req->prenom;
         $etudiant->date_naiss = $req->date_naiss;
@@ -168,9 +170,9 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cin)
     {
-        Student::where('id', $id)->delete();
+        Student::where('cin', $cin)->delete();
         return redirect()->route('etudiants.index');
     }
 }
