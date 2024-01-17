@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function MyFooter() {
     return (
-        <footer className="bg-dark text-light text-center py-3 mt-5 ">
+        <footer className="bg-dark text-light text-center py-3 mt-5">
             <div className="container">
                 <p>&copy; 2024 ENS Rabat. All rights reserved.</p>
                 <p>

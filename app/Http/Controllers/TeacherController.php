@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class teacherController extends Controller {
+
+    
+
     /**
     * Display a listing of the resource.
     *

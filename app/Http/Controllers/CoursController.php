@@ -50,9 +50,9 @@ class CoursController extends Controller
         ]);
         $cours = new Cours;
         $cours->id = $req->id;
-        $cours->nom_cours => $req->nom_cours;
-        $cours->masse_horaire => $req->masse_horaire;
-        $cours->support => $req->support;
+        $cours->nom_cours = $req->nom_cours;
+        $cours->masse_horaire = $req->masse_horaire;
+        $cours->support = $req->support;
         $cours->save();
 
         return response()->json(['message' => 'added successfully']);
