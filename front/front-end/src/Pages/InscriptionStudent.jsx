@@ -56,7 +56,7 @@ export default function InscriptionStudent() {
     setLoading(true);
     const data = {
       cin: student.cin,
-      cne: student.cne,
+      // cne: student.cne,
       nom: student.nom,
       prenom: student.prenom,
       date_naiss: student.date_naiss,
@@ -83,12 +83,12 @@ export default function InscriptionStudent() {
         navigate("/");
         setLoading(false);
       })
-      .catch((err) => {
-        if (err.response.status === 422 || err.response.status === 500) {
-          setInputErrorList(err.response.data.errors); // errors are the ones in the validator
-          setLoading(false);
-        }
-      });
+        // .catch((err) => {
+        //   if (err.response.status === 422 || err.response.status === 500) {
+        //     setInputErrorList(err.response.data.errors); // errors are the ones in the validator
+        //     setLoading(false);
+        //   }
+        // });
   };
   if (loading) {
     return <Loading />;

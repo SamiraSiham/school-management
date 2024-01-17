@@ -4,6 +4,10 @@ import About from "../Pages/About";
 import Inscription from "../Pages/Inscription";
 import InscriptionStudent from "../Pages/InscriptionStudent";
 import InscriptionProf from "../Pages/InscriptionProf";
+import EspaceEtudiant from "../Pages/EspaceEtudiant";
+import EspaceEnseignant from "../Pages/EspaceEnseignant";
+import Calendar from "../Components.jsx/Calendar";
+import SetCalendar from "../Pages/SetCalendar";
 import LoginProf from "../Pages/LoginProf";
 import Home2 from "../Pages/Prof/Home";
 import EtudiantHome from "../Pages/Etudiant/EtudiantHome";
@@ -20,6 +24,10 @@ export default function MyRoutes() {
       <Route path="/prof-home" element={<Home2 />} />
       <Route path="/etudiant-home" element={<EtudiantHome />} />
       <Route path="/nouvelle-inscription-student" element={<InscriptionStudent />} />
+      <Route path="/espace-etudiant" element={<EspaceEtudiant />} />
+      <Route path="/espace-enseignant" element={<EspaceEnseignant />} />
+      <Route path="/calendar" element={<Calendar />} />
+      <Route path="/setcalendar" element={<SetCalendar />} />
     </Routes>
   );
 }
