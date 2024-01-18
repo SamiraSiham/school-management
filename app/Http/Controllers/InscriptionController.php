@@ -70,9 +70,9 @@ class InscriptionController extends Controller
         $candidat->phone_number = $req->phone_number;
         $candidat->email = $req->email;
         $candidat->password = $req->password; 
-        $candidat->diplome_1 = $req->file(diplome_1);
-        $candidat->diplome_2 = $req->file(diplome_2);
-        $candidat->diplome_3 = $req->file(diplome_3);
+        $candidat->diplome_1 = $req->diplome_1;
+        $candidat->diplome_2 = $req->diplome_2;
+        $candidat->diplome_3 = $req->diplome_3;
         $candidat->moy_gen_dip1 = $req->moy_gen_dip1;
         $candidat->moy_gen_dip2 = $req->moy_gen_dip2;
         $candidat->moy_gen_dip3 = $req->moy_gen_dip3;

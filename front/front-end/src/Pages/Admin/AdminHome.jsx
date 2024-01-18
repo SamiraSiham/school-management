@@ -25,7 +25,7 @@ export default function AdminHome() {
                     className="card-img-top"
                     alt="Etudiant images"
                 />
-                <Link to="/" className="btn btn-success ">
+                <Link to="/liste-enseignant" className="btn btn-success ">
                     Go To
                 </Link>
             </div>
@@ -42,7 +42,7 @@ export default function AdminHome() {
                     className="card-img-top"
                     alt="Etudiant images"
                 />
-                <Link to="/" className="btn btn-success ">
+                <Link to="/liste-etudiants" className="btn btn-success ">
                     Go To
                 </Link>
             </div>
@@ -59,7 +59,7 @@ export default function AdminHome() {
                     className="card-img-top"
                     alt="Etudiant images"
                 />
-                <Link to="/" className="btn btn-success ">
+                <Link to="/liste-candidats" className="btn btn-success ">
                     Go To
                 </Link>
             </div>

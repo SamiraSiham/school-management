@@ -7,7 +7,7 @@ export default function EspaceEtudiant() {
     return (
         <div className="container mt-5">
             <h1 className="text-center">Espace Etudiant</h1>
-            <div className="container mt-5">
+            {/* <div className="container mt-5">
                 <div className="card text-white bg-success">
                     <div className="card-body">
                         <h5 className="card-title">Nos Filieres </h5>
@@ -29,7 +29,7 @@ export default function EspaceEtudiant() {
                         Go To
                     </Link>
                 </div>
-            </div>
+            </div> */}
 
             <div className="container mt-5">
                 <div className="card text-white bg-success">

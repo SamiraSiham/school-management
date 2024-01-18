@@ -61,8 +61,7 @@ class LoginRegisterController extends Controller {
     public function validateStudents() {
         $students = DB::table( 'inscription' ) ->orderBy( 'moy_gen_dip2', 'desc' )->limit( 30 )->get();
         
-        for ( $i = 0; $i < count( $students );
-        $i++ ) {
+        for ( $i = 0; $i < count( $students );$i++ ) {
             $new_et = new Etudiant;
             $new_et->cin = $students[$i]->cin;
             $new_et->cne = $students[$i]->cne;
@@ -79,7 +78,7 @@ class LoginRegisterController extends Controller {
             $new_et->moy_gen_dip1 = $students[$i]->moy_gen_dip1;
             $new_et->moy_gen_dip2 = $students[$i]->moy_gen_dip2;
             $new_et->moy_gen_dip3 = $students[$i]->moy_gen_dip3;
-            // $new_et->filliere_id = $students[$i]->choix_1;
+            
 
             $new_et->save();
 

@@ -31,8 +31,13 @@ export default function ListeEnseignant() {
             <div className="row">
                 <div className="col-md-12">
                     <div className="card">
-                        <div className="card-header ">
-                            <h4 className="text-center">Liste Etudiants</h4>
+                        <div className="row card-header ">
+                            <div className="col-9">
+                                <h4 className="text-center">Liste Enseignants</h4>
+                            </div>
+                            <div className="col-3">
+                                <Link className="btn btn-success" to='/nouvelle-inscription-prof'>Ajouter</Link>
+                            </div>
                         </div>
                         <div className="card-body">
                             <table className="table">
@@ -44,7 +49,7 @@ export default function ListeEnseignant() {
                                         <th scope="col">PRENOM</th>
                                         <th scope="col">EMAIL</th>
                                         <th scope="col">TEL</th>
-                                        <th scope="col">ACTIONS</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,15 +63,7 @@ export default function ListeEnseignant() {
                                                 <td>{e.first_name}</td>
                                                 <td>{e.email}</td>
                                                 <td>{e.phone_number}</td>
-                                                <td>
-                                                    <Link to='/' className="btn btn-danger">
-                                                        Delete
-                                                    </Link>
-                                                    <span> </span>
-                                                    <Link to='/' className="btn btn-info">
-                                                        Edit
-                                                    </Link>
-                                                </td>
+                                                
                                             </tr>
                                         ))
                                     }

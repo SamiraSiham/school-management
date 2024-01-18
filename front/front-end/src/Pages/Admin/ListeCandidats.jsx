@@ -12,6 +12,18 @@ export default function InscriptionCandidat() {
     const [loading, setLoading] = useState(true);
     const [candidat, setCandidat] = useState([]);
 
+    const handleValidation = (e) => {
+        e.preventDefault();
+        http
+            .post("/validate-students")
+            .then((res) => {
+                alert("success");
+                navigate("/liste-etudiants");
+                setLoading(false);
+
+            })
+    }
+
     useEffect(() => {
         http.get("/candidat").then((res) => {
             setLoading(false);
@@ -33,7 +45,14 @@ export default function InscriptionCandidat() {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="card-header ">
-                            <h4 className="text-center">Liste Candidats</h4>
+                            <div className="row">
+                                <div className="col-8">
+                                    <h4 className="text-center">Liste Candidats</h4>
+                                </div>
+                                <div className="col-4">
+                                    <button onClick={handleValidation} className="btn btn-success">Valider les inscriptions</button>
+                                </div>
+                            </div>
                         </div>
                         <div className="card-body">
                             <table className="table">
@@ -45,13 +64,12 @@ export default function InscriptionCandidat() {
                                         <th scope="col">PRENOM</th>
                                         <th scope="col">EMAIL</th>
                                         <th scope="col">TEL</th>
-                                        <th scope="col">ACTIONS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
                                     {
-                                        candidat.map(c=> (
+                                        candidat.map(c => (
                                             <tr key={c.cin}>
                                                 <td>{c.cin}</td>
                                                 <td>{c.cne}</td>
@@ -59,9 +77,6 @@ export default function InscriptionCandidat() {
                                                 <td>{c.prenom}</td>
                                                 <td>{c.email}</td>
                                                 <td>{c.phone_number}</td>
-                                                <td>
-                                                    <Link className="btn btn-danger" to='home' />
-                                                </td>
                                             </tr>
                                         ))
                                     }

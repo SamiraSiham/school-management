@@ -43,9 +43,10 @@ export default function SetCalendar() {
         // console.log(filiere);
 
         http.get("/teacher").then((res) => {
+            console.log(res.data.teachers.length)
             var te = [];
-            for (var i = 0; i < res.data.length; i++) {
-                te.push(res.data[i].last_name);
+            for (var i = 0; i < res.data.teachers.length; i++) {
+                te.push(res.data.teachers[i].last_name);
             }
             setTitle(te);
         });

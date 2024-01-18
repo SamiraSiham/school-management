@@ -36,10 +36,10 @@ export default function InscriptionProf() {
       mot_de_passe: prof.mdp,
     };
     http
-      .post("/teachers", data)
+      .post("/teacher", data)
       .then((res) => {
         alert("Dik sa3a chof wach mchat wla la");
-        navigate("/");
+        // navigate("/");
         setLoading(false);
       })
       .catch((err) => {

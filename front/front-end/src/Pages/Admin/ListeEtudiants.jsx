@@ -15,8 +15,6 @@ export default function InscriptionStudent() {
     useEffect(() => {
         http.get("/etudiant").then((res) => {
             setLoading(false);
-            // const res = res.data;
-            // setEtudiant(res.data.etudiants)
             return res.data.etudiants
         }).then((data) => {
             setEtudiant(data)
@@ -45,7 +43,7 @@ export default function InscriptionStudent() {
                                         <th scope="col">PRENOM</th>
                                         <th scope="col">EMAIL</th>
                                         <th scope="col">TEL</th>
-                                        <th scope="col">ACTIONS</th>
+                                        <th scope="col">MOYENNE BAC+2</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,14 +57,7 @@ export default function InscriptionStudent() {
                                                 <td>{e.prenom}</td>
                                                 <td>{e.email}</td>
                                                 <td>{e.phone_number}</td>
-                                                <td>
-                                                    <Link to='/' className="btn btn-danger">
-                                                        Delete
-                                                    </Link>
-                                                    <Link to='/' className="btn btn-info">
-                                                        Edit
-                                                    </Link>
-                                                </td>
+                                                <td>{e.moy_gen_dip2}</td>
                                             </tr>
                                         ))
                                     }

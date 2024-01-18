@@ -57,7 +57,7 @@ export default function Inscription() {
                     <p className="card-text">
                         Clickez dessous pour s'inscrire comme Admin
                     </p>
-                    <Link to="/login-etudiant" className="btn btn-primary">
+                    <Link to="/login-admin" className="btn btn-primary">
                         S'inscrire
                     </Link>
                 </div>

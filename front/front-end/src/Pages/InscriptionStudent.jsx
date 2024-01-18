@@ -7,9 +7,10 @@ export default function InscriptionStudent() {
   const navigate = useNavigate();
   const { http } = Api();
   const [loading, setLoading] = useState(false);
-  const [file, setFile] = useState([]);
 
   const [inputErrorList, setInputErrorList] = useState({});
+  
+
   const [student, setStudent] = useState({
     cin: "",
     cne: "",
@@ -33,61 +34,24 @@ export default function InscriptionStudent() {
     e.persist();
     setStudent({ ...student, [e.target.name]: e.target.value });
   };
-  const onFileChange = (e,inputIndex) => {
-    e.persist();
-    const files = Array.from(e.target.files);
-    // setFile({...file,[e.target.name] : e.target.files});
-    setFile((prevSelectedFiles) => {
-      const updatedFiles = [...prevSelectedFiles];
-      updatedFiles[inputIndex] = files;
-      return updatedFiles;
-    });
-
-    // for (let i = 0; i < file.length; i++) {
-    //   setFile([...file,e.target.files[i]]);
-
-    // }
-
-
-  };
+  
   const inscrire = (e) => {
     e.preventDefault();
-    var formData = new FormData();
-    formData.append('cin',student.cin);
-    formData.append('cne',student.cne);
-    formData.append('nom',student.nom);
-    formData.append('prenom',student.prenom);
-    formData.append('date_naiss',student.date_naiss);
-    formData.append('phone_number',student.phone_number);
-    formData.append('email',student.email);
-    formData.append('password',student.password);
-    formData.append('moy_gen_dip1',student.moy_gen_dip1);
-    formData.append('moy_gen_dip2',student.moy_gen_dip2);
-    formData.append('moy_gen_dip3',student.moy_gen_dip3);
-
-
-    var diplome1 = document.getElementsByName('diplome_1');
-    var diplome2 = document.getElementsByName('diplome_2');
-    var diplome3 = document.getElementsByName('diplome_3');
-
-    console.log(file);
+    
     setLoading(true);
 
     const data = {
       cin: student.cin,
-      // cne: student.cne,
+      cne: student.cne,
       nom: student.nom,
       prenom: student.prenom,
       date_naiss: student.date_naiss,
       phone_number: student.phone_number,
       email: student.email,
       password: student.password,
-      // diplome_1: student.diplome_1,
-      diplome_1: file[1],
-      // diplome_2: student.diplome_2,
-      diplome_2: file[2],
-      // diplome_3: student.diplome_3,
-      diplome_3: file[3],
+      diplome_1: student.diplome_1,
+      diplome_2: student.diplome_2,
+      diplome_3: student.diplome_3,
       moy_gen_dip1: student.moy_gen_dip1,
       moy_gen_dip2: student.moy_gen_dip2,
       moy_gen_dip3: student.moy_gen_dip3,
@@ -95,11 +59,12 @@ export default function InscriptionStudent() {
       choix_2: student.choix_2,
       choix_3: student.choix_3,
     };
+    console.log(data);
     http
       .post("/candidat", data)
       .then((res) => {
         alert("Dik sa3a chof wach mchat wla la");
-        navigate("/");
+        // navigate("/");
         setLoading(false);
       })
         // .catch((err) => {
@@ -222,8 +187,7 @@ export default function InscriptionStudent() {
                       type="file"
                       name="diplome_1"
                       value={student.diplome_1.name}
-                      // onChange={onFileChange}
-                      onChange={(e)=>onFileChange(e,1)}
+                      onChange={handleInput}
                       className="form-control"
                       placeholder="Bac Pc,SVT .."
                     />
@@ -257,8 +221,7 @@ export default function InscriptionStudent() {
                       type="file"
                       name="diplome_2"
                       value={student.diplome_2.name}
-                      // onChange={onFileChange}
-                      onChange={(e)=>onFileChange(e,2)}
+                      onChange={handleInput}
                       className="form-control"
                       placeholder="Bac+2: DTS DUT DEUG"
                     />
@@ -285,8 +248,7 @@ export default function InscriptionStudent() {
                       type="file"
                       name="diplome_3"
                       value={student.diplome_3.name}
-                      // onChange={onFileChange}
-                      onChange={(e)=>onFileChange(e,3)}
+                      onChange={handleInput}
                       className="form-control"
                       placeholder="Bac+3"
                     />
@@ -327,7 +289,7 @@ export default function InscriptionStudent() {
                 <div className="mb-3">
                   <label htmlFor="">Choix 2</label>
                   <select
-                    name="choix2"
+                    name="choix_2"
                     className="form-control"
                     onChange={handleInput}
                   >
@@ -344,7 +306,7 @@ export default function InscriptionStudent() {
                 <div className="mb-3">
                   <label htmlFor="">Choix 3</label>
                   <select
-                    name="choix3"
+                    name="choix_3"
                     className="form-control"
                     onChange={handleInput}
                   >

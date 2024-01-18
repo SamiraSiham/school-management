@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
+use Illuminate\Support\Facades\DB;
 
 class EtudiantController extends Controller
 {
@@ -14,7 +15,7 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        $etudiants = Etudiant::all();
+        $etudiants =  DB::table( 'etudiant' ) ->orderBy( 'moy_gen_dip2', 'desc' )->get();
         // return view("etudiants.index",compact('etudiants'));
         return response()->json([
             'etudiants' => $etudiants,
