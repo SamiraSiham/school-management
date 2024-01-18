@@ -38,7 +38,7 @@ export default function InscriptionProf() {
     http
       .post("/teacher", data)
       .then((res) => {
-        alert("Dik sa3a chof wach mchat wla la");
+        alert("Success");
         // navigate("/");
         setLoading(false);
       })

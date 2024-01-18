@@ -26,7 +26,7 @@ export default function LoginCandidat() {
     http
       .post("/login-candidat", data)
       .then((res) => {
-        alert("Dik sa3a chof wach mchat wla la");
+        alert("Success");
         navigate("/candidat-home");
         setLoading(false);
         

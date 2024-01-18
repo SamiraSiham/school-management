@@ -64,6 +64,7 @@ export default function InscriptionCandidat() {
                                         <th scope="col">PRENOM</th>
                                         <th scope="col">EMAIL</th>
                                         <th scope="col">TEL</th>
+                                        <th scope="col">MOYENNE BAC+2</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,6 +78,7 @@ export default function InscriptionCandidat() {
                                                 <td>{c.prenom}</td>
                                                 <td>{c.email}</td>
                                                 <td>{c.phone_number}</td>
+                                                <td>{c.moy_gen_dip2}</td>
                                             </tr>
                                         ))
                                     }
