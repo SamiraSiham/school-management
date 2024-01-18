@@ -34,3 +34,5 @@ Route::post('login-prof', [LoginRegisterController::class, 'loginProf']);
 Route::post('login-etudiant', [LoginRegisterController::class, 'loginEtudiant']);
 Route::post('login-admin', [LoginRegisterController::class, 'loginAdmin']);
 Route::post('login-candidat', [LoginRegisterController::class, 'loginCandidat']);
+
+Route::post('validate-students', [LoginRegisterController::class, 'validateStudents']);

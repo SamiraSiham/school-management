@@ -8,31 +8,38 @@ export default function LoginEtudiant() {
   const { http } = Api();
   const [loading, setLoading] = useState(false);
   const [inputErrorList, setInputErrorList] = useState({});
-  const [etudiant, setEtudiant] = useState({
+  const [admin, setAdmin] = useState({
     email: "",
     password: "",
   });
   const handleInput = (e) => {
     e.persist();
-    setEtudiant({ ...etudiant, [e.target.name]: e.target.value });
+    setAdmin({ ...admin, [e.target.name]: e.target.value });
   };
   const login = (e) => {
     e.preventDefault();
     setLoading(true);
     const data = {
-      email: etudiant.email,
-      password: etudiant.password,
+      email: admin.email,
+      password: admin.password,
     };
     http
-      .post("/login-etudiant", data)
+      .post("/login-admin", data)
       .then((res) => {
         alert("Dik sa3a chof wach mchat wla la");
-        navigate("/etudiant-home");
+        navigate("/admin-home");
         setLoading(false);
         
       })
       .catch((err) => {
+        // if (err.response.status === 422 && err.response.status === 500) {
+        // if(err.response.status === 500){
+        //     setInputErrorList([
+        //         "login error"
+        //     ]);
+        // }
         if (err.response.status === 422) {
+          // navigate('/')
           setInputErrorList(err.response.data.errors); // errors are the ones in the validator
           setLoading(false);
         }
@@ -51,7 +58,7 @@ export default function LoginEtudiant() {
         <div className="col-md-12">
           <div className="card">
             <div className="card-header ">
-              <h4 className="text-center">Login Etudiant</h4>
+              <h4 className="text-center">Login Admin</h4>
             </div>
             <div className="card-body">
               <form onSubmit={login}>
@@ -61,7 +68,7 @@ export default function LoginEtudiant() {
                   <input
                     type="mail"
                     name="email"
-                    value={etudiant.email}
+                    value={admin.email}
                     onChange={handleInput}
                     className="form-control"
                   />
@@ -73,7 +80,7 @@ export default function LoginEtudiant() {
                   <input
                     type="password"
                     name="password"
-                    value={etudiant.password}
+                    value={admin.password}
                     onChange={handleInput}
                     className="form-control"
                   />

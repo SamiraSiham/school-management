@@ -20,7 +20,7 @@ class teacherController extends Controller {
     public function index() {
         $teachers = Teacher::all();
         // return view( 'teachers.index', compact( 'teachers' ) );
-        return response()->json($teachers);
+        return response()->json(['teachers'=>$teachers]);
     }
 
     /**

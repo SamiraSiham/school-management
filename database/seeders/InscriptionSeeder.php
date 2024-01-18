@@ -14,6 +14,6 @@ class InscriptionSeeder extends Seeder
      */
     public function run()
     {
-        Inscription::factory()->count(5)->create();
+        Inscription::factory()->count(40)->create();
     }
 }

@@ -1,9 +1,11 @@
 import { useState } from "react";
-import Api from "../Components.jsx/Api";
-import Loading from "../Components.jsx/Loading";
+// import Api from "../Components.jsx/Api";
+// import Loading from "../Components.jsx/Loading";
+import Loading from "../../../Components.jsx/Loading";
+import Api from "../../../Components.jsx/Api";
 import { useNavigate } from "react-router-dom";
 
-export default function InscriptionStudent() {
+export default function AjouterEtudiant() {
   const navigate = useNavigate();
   const { http } = Api();
   const [loading, setLoading] = useState(false);
@@ -52,27 +54,8 @@ export default function InscriptionStudent() {
   };
   const inscrire = (e) => {
     e.preventDefault();
-    var formData = new FormData();
-    formData.append('cin',student.cin);
-    formData.append('cne',student.cne);
-    formData.append('nom',student.nom);
-    formData.append('prenom',student.prenom);
-    formData.append('date_naiss',student.date_naiss);
-    formData.append('phone_number',student.phone_number);
-    formData.append('email',student.email);
-    formData.append('password',student.password);
-    formData.append('moy_gen_dip1',student.moy_gen_dip1);
-    formData.append('moy_gen_dip2',student.moy_gen_dip2);
-    formData.append('moy_gen_dip3',student.moy_gen_dip3);
-
-
-    var diplome1 = document.getElementsByName('diplome_1');
-    var diplome2 = document.getElementsByName('diplome_2');
-    var diplome3 = document.getElementsByName('diplome_3');
-
     console.log(file);
     setLoading(true);
-
     const data = {
       cin: student.cin,
       // cne: student.cne,
@@ -96,9 +79,9 @@ export default function InscriptionStudent() {
       choix_3: student.choix_3,
     };
     http
-      .post("/candidat", data)
+      .post("/etudiant", data)
       .then((res) => {
-        alert("Dik sa3a chof wach mchat wla la");
+        alert("success");
         navigate("/");
         setLoading(false);
       })

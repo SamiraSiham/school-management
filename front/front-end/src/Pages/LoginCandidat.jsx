@@ -3,31 +3,31 @@ import Api from "../Components.jsx/Api";
 import Loading from "../Components.jsx/Loading";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginEtudiant() {
+export default function LoginCandidat() {
   const navigate = useNavigate();
   const { http } = Api();
   const [loading, setLoading] = useState(false);
   const [inputErrorList, setInputErrorList] = useState({});
-  const [etudiant, setEtudiant] = useState({
+  const [candidat, setCandidat] = useState({
     email: "",
     password: "",
   });
   const handleInput = (e) => {
     e.persist();
-    setEtudiant({ ...etudiant, [e.target.name]: e.target.value });
+    setCandidat({ ...candidat, [e.target.name]: e.target.value });
   };
   const login = (e) => {
     e.preventDefault();
     setLoading(true);
     const data = {
-      email: etudiant.email,
-      password: etudiant.password,
+      email: candidat.email,
+      password: candidat.password,
     };
     http
-      .post("/login-etudiant", data)
+      .post("/login-candidat", data)
       .then((res) => {
         alert("Dik sa3a chof wach mchat wla la");
-        navigate("/etudiant-home");
+        navigate("/candidat-home");
         setLoading(false);
         
       })
@@ -51,7 +51,7 @@ export default function LoginEtudiant() {
         <div className="col-md-12">
           <div className="card">
             <div className="card-header ">
-              <h4 className="text-center">Login Etudiant</h4>
+              <h4 className="text-center">Login Candidat</h4>
             </div>
             <div className="card-body">
               <form onSubmit={login}>
@@ -61,7 +61,7 @@ export default function LoginEtudiant() {
                   <input
                     type="mail"
                     name="email"
-                    value={etudiant.email}
+                    value={candidat.email}
                     onChange={handleInput}
                     className="form-control"
                   />
@@ -73,7 +73,7 @@ export default function LoginEtudiant() {
                   <input
                     type="password"
                     name="password"
-                    value={etudiant.password}
+                    value={candidat.password}
                     onChange={handleInput}
                     className="form-control"
                   />
