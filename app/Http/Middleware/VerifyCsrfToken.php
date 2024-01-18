@@ -11,7 +11,5 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array<int, string>
      */
-    protected $except = [
-        //
-    ];
+    protected $except = ["http://localhost:8000/api/seance/create"];
 }

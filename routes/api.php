@@ -8,7 +8,8 @@ use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\FilliereController;
-use App\Http\Controllers\LoginRegisterController;
+use App\Http\Controllers\LoginRegisterController;use App\Http\Controllers\Sceance;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +30,10 @@ Route::resource('etudiant', EtudiantController::class);
 Route::resource('candidat', InscriptionController::class);
 Route::resource('filliere', FilliereController::class);
 Route::resource('cours', CoursController::class);
+
+Route::get('/seance',[Sceance::class,'index']);
+Route::post('/seance/create',[Sceance::class,'store']);
+
 
 Route::post('login-prof', [LoginRegisterController::class, 'loginProf']);
 Route::post('login-etudiant', [LoginRegisterController::class, 'loginEtudiant']);
