@@ -120,7 +120,7 @@ class teacherController extends Controller {
             'phone_number'=>'required',
             'date_inscription'=>'required',
             'salaire' => 'required',
-            'email' => 'required|email|unique:teacher',
+            'email' => 'required|email',
         ],[
             'last_name.required' => 'required field',
             'first_name.required' => 'required field',
@@ -156,6 +156,6 @@ class teacherController extends Controller {
         $teacher->delete();
         // Teacher::where('cin', $cin)->delete();
         // return redirect()->route('teachers.index')->with(['success'=>'deleted successfully']);
-        return response()->json('deleted successfully');
+        return response()->json(['message' => 'deleted successfully']);
     }
 }

@@ -14,11 +14,11 @@ import EtudiantHome from "../Pages/Etudiant/EtudiantHome";
 import AdminHome from "../Pages/Admin/AdminHome";
 import LoginEtudiant from "../Pages/LoginEtudiant";
 import LoginAdmin from "../Pages/LoginAdmin";
-import LoginCandidat from "../Pages/LoginCandidat";
+// import LoginCandidat from "../Pages/LoginCandidat";
 import ListeEtudiants from "../Pages/Admin/ListeEtudiants";
 import ListeEnseignant from "../Pages/Admin/ListeEnseignant";
 import ListeCandidats from "../Pages/Admin/ListeCandidats";
-import EditEtudiant from "../Pages/Admin/crud-etudiants/EditEtudiant";
+import EditEnseignant from "../Pages/Admin/crud-etudiants/EditEnseignant";
 export default function MyRoutes() {
   return (
     <Routes>
@@ -51,6 +51,7 @@ export default function MyRoutes() {
       <Route path="/admin-home" element={<AdminHome />} />
       <Route path="/liste-etudiants" element={<ListeEtudiants />} />
       <Route path="/liste-enseignant" element={< ListeEnseignant/>} />
+      <Route path="/modifier-enseignant/:cin" element={< EditEnseignant/>} />
       <Route path="/liste-candidats" element={< ListeCandidats/>} />
 
       

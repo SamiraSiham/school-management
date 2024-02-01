@@ -26,6 +26,19 @@ export default function ListeEnseignant() {
         return <Loading />;
     }
 
+    const handleDelete = (cin) =>{
+        if(window.confirm('Are you sure you want to delete this record?') == true) {
+            http.delete(`/teacher/${cin}`).then((res) => {
+                setLoading(false);
+                console.log(res);
+                return res
+            })
+            alert('Teacher deleted successfully');
+            window.location.reload();
+            console.log(cin);
+        }
+    }
+
     return (
         <div className="container mt-5">
             <div className="row">
@@ -44,12 +57,11 @@ export default function ListeEnseignant() {
                                 <thead>
                                     <tr>
                                         <th scope="col">CIN</th>
-
                                         <th scope="col">NOM</th>
                                         <th scope="col">PRENOM</th>
                                         <th scope="col">EMAIL</th>
                                         <th scope="col">TEL</th>
-                                        
+                                        <th scope="col">ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +75,11 @@ export default function ListeEnseignant() {
                                                 <td>{e.first_name}</td>
                                                 <td>{e.email}</td>
                                                 <td>{e.phone_number}</td>
-                                                
+                                                <td>
+                                                    <Link className="btn btn-info" to={`/modifier-enseignant/${e.cin}`}>Modifier</Link>
+                                                    <span> </span>
+                                                    <button className="btn btn-danger" onClick={(event) => handleDelete(e.cin)}>Supprimer</button>
+                                                </td>
                                             </tr>
                                         ))
                                     }

@@ -275,9 +275,10 @@ export default function InscriptionStudent() {
                     name="choix_1"
                     className="form-control"
                     id=""
+                    
                     onChange={handleInput}
                   >
-                    <option value="" selected disabled>
+                    <option value="" defaultChecked disabled>
                       Choix1
                     </option>
                     <option value="tmw">tmw</option>
@@ -291,9 +292,10 @@ export default function InscriptionStudent() {
                   <select
                     name="choix_2"
                     className="form-control"
+                    
                     onChange={handleInput}
                   >
-                    <option value="" selected disabled>
+                    <option value="" defaultChecked disabled>
                       Choix2
                     </option>
 
@@ -310,7 +312,7 @@ export default function InscriptionStudent() {
                     className="form-control"
                     onChange={handleInput}
                   >
-                    <option value="" selected disabled>
+                    <option value="" defaultChecked disabled>
                       Choix3
                     </option>
 
