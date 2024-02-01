@@ -26,7 +26,7 @@ export default function LoginEtudiant() {
     http
       .post("/login-etudiant", data)
       .then((res) => {
-        alert("Dik sa3a chof wach mchat wla la");
+        alert("Success");
         navigate("/etudiant-home");
         setLoading(false);
         

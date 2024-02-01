@@ -23,13 +23,13 @@ class TeacherFactory extends Factory
         $faker = Faker::create();
         return [
             'cin' => Str::random(6),
-            'last_name' => Str::random(10),
-            'first_name' => Str::random(10),
+            'last_name' => $faker->LastName,
+            'first_name' => $faker->FirstName,
             'phone_number' => $faker->phoneNumber,
             'email' => $faker->email(),
             'salaire' => rand(1000,7000),
             'date_inscription' => $faker->date,
-            'mot_de_passe' => Hash::make(Str::random(10))
+            'mot_de_passe' => Str::random(4)
         ];
     }
 }

@@ -26,7 +26,7 @@ export default function LoginProf() {
     http
       .post("/login-prof", data)
       .then((res) => {
-        alert("Dik sa3a chof wach mchat wla la");
+        alert("Success");
         navigate("/prof-home");
         setLoading(false);
         

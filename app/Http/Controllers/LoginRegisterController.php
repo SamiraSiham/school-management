@@ -59,7 +59,7 @@ class LoginRegisterController extends Controller {
     }
 
     public function validateStudents() {
-        $students = DB::table( 'inscription' ) ->orderBy( 'moy_gen_dip2', 'desc' )->limit( 30 )->get();
+        $students = DB::table( 'inscription' ) ->orderBy( 'moy_gen_dip2', 'desc' )->limit( 5 )->get();
         
         for ( $i = 0; $i < count( $students );$i++ ) {
             $new_et = new Etudiant;
