@@ -25,11 +25,16 @@ export default function SetCalendar() {
             heureFin: endTime,
         };
         console.log(data);
-        
+
         // setDataSet({ data });
+        var success = false;
         http.post("/seance/create", data).then((res) => {
             console.log(res.data);
+            success = true;
         });
+        if (success) {
+            window.location.reload();
+        }
         // navigate("/calendar");
     };
     useEffect(() => {
@@ -43,7 +48,7 @@ export default function SetCalendar() {
         // console.log(filiere);
 
         http.get("/teacher").then((res) => {
-            console.log(res.data.teachers.length)
+            console.log(res.data.teachers.length);
             var te = [];
             for (var i = 0; i < res.data.teachers.length; i++) {
                 te.push(res.data.teachers[i].last_name);
